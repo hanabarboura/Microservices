@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package hotel;
+
+
+message Hotel {
+  string id = 1;
+  string name = 2;
+  string location = 3;
+}
+
+
+message GetHotelRequest {
+  string hotel_id = 1;
+}
+
+message GetHotelResponse {
+  Hotel hotel = 1;
+}
+
+message SearchHotelsRequest {
+  string query = 1;
+}
+
+message SearchHotelsResponse {
+  repeated Hotel hotels = 1;
+}
+
+message CreateHotelRequest {
+  string hotel_id = 1;
+  string name = 2;
+  string location = 3;
+}
+
+message CreateHotelResponse {
+  Hotel hotel = 1;
+}
+
+service HotelService {
+  rpc GetHotel(GetHotelRequest) returns (GetHotelResponse);
+  rpc SearchHotels(SearchHotelsRequest) returns (SearchHotelsResponse);
+  rpc CreateHotel(CreateHotelRequest) returns (CreateHotelResponse);
+}
